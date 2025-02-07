@@ -20,22 +20,22 @@ const App = () => {
   ]
 
   return (
-    <div className="min-h-screen bg-[#faf9f7] px-8">
-      <header className="pt-8 max-w-2xl">
-        <h1 className="text-3xl font-normal mb-6">Andy Blechman</h1>
-        <p className="text-gray-700 leading-relaxed mb-12">
+    <div className="min-h-screen bg-[#faf9f7] px-16">
+      <header className="pt-16 max-w-2xl">
+        <h1 className="text-4xl font-normal mb-8">Andy Blechman</h1>
+        <p className="text-xl text-gray-900 leading-relaxed mb-16">
           I'm primarily interested in helping local businesses thrive through better technology. 
           Previously co-founded Bottle.com, helping food entrepreneurs sell online and grow their businesses.
         </p>
       </header>
 
       <main className="max-w-2xl">
-        <section className="mb-16">
-          <h2 className="text-2xl font-normal mb-6">Featured Writing</h2>
-          <div className="space-y-6">
+        <section className="mb-20">
+          <h2 className="text-2xl font-normal mb-8">Featured Writing</h2>
+          <div className="space-y-8">
             {blogPosts.map((post, index) => (
               <div key={index} className="group">
-                <div className="text-gray-500 mb-1">{post.date}</div>
+                <div className="text-gray-500 mb-2">{post.date}</div>
                 <a 
                   href={post.url} 
                   className="text-xl text-gray-900 hover:text-gray-600 transition-colors"
@@ -47,9 +47,9 @@ const App = () => {
           </div>
         </section>
 
-        <section className="mb-16">
-          <h2 className="text-2xl font-normal mb-6">Work</h2>
-          <ul className="list-disc pl-4 space-y-6 text-gray-700">
+        <section className="mb-20">
+          <h2 className="text-2xl font-normal mb-8">Work</h2>
+          <ul className="list-disc pl-4 space-y-8 text-xl text-gray-900">
             <li>
               Co-founded Bottle.com with Will. All-in-one software for food entrepreneurs 
               to sell online. Partnered with local business owners to help them create 
@@ -75,35 +75,35 @@ const App = () => {
           </ul>
         </section>
 
-        <section className="mb-16">
-          <h2 className="text-2xl font-normal mb-6">About</h2>
-          <div className="space-y-6">
+        <section className="mb-20">
+          <h2 className="text-2xl font-normal mb-8">About</h2>
+          <div className="space-y-8">
             <img 
               src="/images/family-photo.jpg"
               alt="Andy with family by wooden wall" 
               className="w-full rounded-lg object-cover"
             />
-            <p className="text-gray-700">
+            <p className="text-xl text-gray-900">
               Live outside Atlanta.
             </p>
           </div>
         </section>
 
-        <section className="mb-16">
-          <h2 className="text-2xl font-normal mb-6">Connect</h2>
-          <ul className="list-disc pl-4 space-y-3 text-gray-700">
+        <section className="mb-20">
+          <h2 className="text-2xl font-normal mb-8">Connect</h2>
+          <ul className="list-disc pl-4 space-y-4 text-xl text-gray-900">
             <li>
-              <a href="#" className="hover:text-gray-900 transition-colors">
+              <a href="#" className="hover:text-gray-600 transition-colors">
                 Twitter
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-gray-900 transition-colors">
+              <a href="#" className="hover:text-gray-600 transition-colors">
                 LinkedIn
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-gray-900 transition-colors">
+              <a href="#" className="hover:text-gray-600 transition-colors">
                 Email
               </a>
             </li>

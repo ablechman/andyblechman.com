@@ -20,16 +20,19 @@ const App = () => {
   ]
 
   return (
-    <div className="min-h-screen bg-[#faf9f7]">
-      <header className="pt-8 pb-6 px-4 md:px-6 lg:px-8">
-        <div className="max-w-2xl mx-auto">
-          <h1 className="text-xl font-normal text-gray-900 mb-4">Andy Blechman</h1>
-          <p className="text-gray-700 leading-normal max-w-xl">
-            I'm primarily interested in helping local businesses thrive through better technology. 
-            Previously co-founded Bottle.com, helping food entrepreneurs sell online and grow their businesses.
-          </p>
-        </div>
-      </header>
+    <div className="min-h-screen bg-[#faf9f7] px-8">
+    <header className="pt-8 max-w-2xl">
+      <h1 className="text-3xl font-normal mb-6">Andy Blechman</h1>
+      <p className="text-gray-700 leading-relaxed mb-12">
+        I'm primarily interested in helping local businesses thrive through better technology. 
+        Previously co-founded Bottle.com, helping food entrepreneurs sell online and grow their businesses.
+      </p>
+    </header>
+  
+    <main className="max-w-2xl">
+      {/* Rest of the content remains the same but remove px-4 md:px-6 lg:px-8 classes */}
+    </main>
+  </div>
 
       <main className="max-w-2xl mx-auto px-4 md:px-6 lg:px-8 py-4">
         <section className="mb-10">

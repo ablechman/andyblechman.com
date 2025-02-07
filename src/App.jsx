@@ -21,29 +21,24 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-[#faf9f7] px-8">
-    <header className="pt-8 max-w-2xl">
-      <h1 className="text-3xl font-normal mb-6">Andy Blechman</h1>
-      <p className="text-gray-700 leading-relaxed mb-12">
-        I'm primarily interested in helping local businesses thrive through better technology. 
-        Previously co-founded Bottle.com, helping food entrepreneurs sell online and grow their businesses.
-      </p>
-    </header>
-  
-    <main className="max-w-2xl">
-      {/* Rest of the content remains the same but remove px-4 md:px-6 lg:px-8 classes */}
-    </main>
-  </div>
+      <header className="pt-8 max-w-2xl">
+        <h1 className="text-3xl font-normal mb-6">Andy Blechman</h1>
+        <p className="text-gray-700 leading-relaxed mb-12">
+          I'm primarily interested in helping local businesses thrive through better technology. 
+          Previously co-founded Bottle.com, helping food entrepreneurs sell online and grow their businesses.
+        </p>
+      </header>
 
-      <main className="max-w-2xl mx-auto px-4 md:px-6 lg:px-8 py-4">
-        <section className="mb-10">
-          <h2 className="text-lg font-normal text-gray-900 mb-4">Featured Writing</h2>
-          <div className="space-y-3">
+      <main className="max-w-2xl">
+        <section className="mb-16">
+          <h2 className="text-2xl font-normal mb-6">Featured Writing</h2>
+          <div className="space-y-6">
             {blogPosts.map((post, index) => (
               <div key={index} className="group">
-                <div className="text-sm text-gray-500 mb-0.5">{post.date}</div>
+                <div className="text-gray-500 mb-1">{post.date}</div>
                 <a 
                   href={post.url} 
-                  className="text-gray-900 hover:text-gray-600 transition-colors"
+                  className="text-xl text-gray-900 hover:text-gray-600 transition-colors"
                 >
                   {post.title}
                 </a>
@@ -52,9 +47,9 @@ const App = () => {
           </div>
         </section>
 
-        <section className="mb-10">
-          <h2 className="text-lg font-normal text-gray-900 mb-4">Work</h2>
-          <ul className="list-disc pl-4 space-y-3 text-gray-700">
+        <section className="mb-16">
+          <h2 className="text-2xl font-normal mb-6">Work</h2>
+          <ul className="list-disc pl-4 space-y-6 text-gray-700">
             <li>
               Co-founded Bottle.com with Will. All-in-one software for food entrepreneurs 
               to sell online. Partnered with local business owners to help them create 
@@ -80,9 +75,9 @@ const App = () => {
           </ul>
         </section>
 
-        <section className="mb-10">
-          <h2 className="text-lg font-normal text-gray-900 mb-4">About</h2>
-          <div className="space-y-4">
+        <section className="mb-16">
+          <h2 className="text-2xl font-normal mb-6">About</h2>
+          <div className="space-y-6">
             <img 
               src="/images/family-photo.jpg"
               alt="Andy with family by wooden wall" 
@@ -94,9 +89,9 @@ const App = () => {
           </div>
         </section>
 
-        <section className="mb-10">
-          <h2 className="text-lg font-normal text-gray-900 mb-4">Connect</h2>
-          <ul className="list-disc pl-4 space-y-1.5 text-gray-700">
+        <section className="mb-16">
+          <h2 className="text-2xl font-normal mb-6">Connect</h2>
+          <ul className="list-disc pl-4 space-y-3 text-gray-700">
             <li>
               <a href="#" className="hover:text-gray-900 transition-colors">
                 Twitter
@@ -115,17 +110,6 @@ const App = () => {
           </ul>
         </section>
       </main>
-
-      <footer className="py-6 px-4 md:px-6 lg:px-8">
-        <div className="max-w-2xl mx-auto">
-          <a 
-            href="/blog" 
-            className="inline-block bg-[#492c1d] text-white px-5 py-2 rounded hover:bg-[#3a2317] transition-colors"
-          >
-            Read the blog →
-          </a>
-        </div>
-      </footer>
     </div>
   )
 }

@@ -80,7 +80,7 @@ const App = () => {
            <h2 className="text-lg font-normal mb-4">About</h2>
            <div className="space-y-4">
              <img 
-               src="/images/family-photo.jpg"
+               src="/public/images/family-photo.jpg"
                alt="Andy with family by wooden wall" 
                className="w-full rounded-lg object-cover"
              />

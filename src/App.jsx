@@ -20,10 +20,10 @@ const App = () => {
   ]
 
   return (
-    <div className="min-h-screen bg-[#faf9f7] font-sans">
+    <div className="min-h-screen bg-[#faf9f7]">
       <div className="max-w-[640px] mx-auto pt-16">
         <header className="mb-16">
-          <h1 className="text-4xl font-semibold mb-6 text-gray-900">Andy Blechman</h1>
+          <h1 className="text-4xl font-normal mb-6 text-gray-900">Andy Blechman</h1>
           <p className="text-lg text-gray-800 leading-relaxed">
             I'm primarily interested in helping local businesses thrive through better technology. 
             Previously co-founded Bottle.com, helping food entrepreneurs sell online and grow their businesses.
@@ -32,7 +32,7 @@ const App = () => {
 
         <main>
           <section className="mb-16">
-            <h2 className="text-2xl font-medium mb-6 text-gray-900">Featured Writing</h2>
+            <h2 className="text-2xl font-normal mb-6 text-gray-900">Featured Writing</h2>
             <div className="space-y-5">
               {blogPosts.map((post, index) => (
                 <div key={index} className="group">
@@ -49,7 +49,7 @@ const App = () => {
           </section>
 
           <section className="mb-16">
-            <h2 className="text-2xl font-medium mb-6 text-gray-900">Work</h2>
+            <h2 className="text-2xl font-normal mb-6 text-gray-900">Work</h2>
             <ul className="list-disc pl-4 space-y-4 text-lg text-gray-800">
               <li>
                 Co-founded Bottle.com with Will. All-in-one software for food entrepreneurs 
@@ -77,7 +77,7 @@ const App = () => {
           </section>
 
           <section className="mb-16">
-            <h2 className="text-2xl font-medium mb-6 text-gray-900">About</h2>
+            <h2 className="text-2xl font-normal mb-6 text-gray-900">About</h2>
             <div className="space-y-4">
               <img 
                 src="/images/Family photo.png"
@@ -91,7 +91,7 @@ const App = () => {
           </section>
 
           <section className="mb-16">
-            <h2 className="text-2xl font-medium mb-6 text-gray-900">Connect</h2>
+            <h2 className="text-2xl font-normal mb-6 text-gray-900">Connect</h2>
             <ul className="list-disc pl-4 space-y-3 text-lg text-gray-800">
               <li>
                 <a 

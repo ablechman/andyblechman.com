@@ -20,25 +20,26 @@ const App = () => {
   ]
 
   return (
-    <div className="min-h-screen bg-[#faf9f7]">
+    <div className="min-h-screen bg-[#faf9f7] font-sans">
       <div className="max-w-[640px] mx-auto pt-16">
         <header className="mb-16">
-          <h1 className="text-3xl font-normal mb-6">Andy Blechman</h1>
-          <p className="text-gray-700 leading-relaxed">
-            I've spent the last 10 years helping small businesses feed helthy food to their commmunities as the Co-founder of Bottle.com.  Currently exploring the intersection of psyhcology, physiology, and sports as it related to the built environment. 
+          <h1 className="text-4xl font-semibold mb-6 text-gray-900">Andy Blechman</h1>
+          <p className="text-lg text-gray-800 leading-relaxed">
+            I'm primarily interested in helping local businesses thrive through better technology. 
+            Previously co-founded Bottle.com, helping food entrepreneurs sell online and grow their businesses.
           </p>
         </header>
 
         <main>
           <section className="mb-16">
-            <h2 className="text-lg font-normal mb-4">Featured Writing</h2>
-            <div className="space-y-3">
+            <h2 className="text-2xl font-medium mb-6 text-gray-900">Featured Writing</h2>
+            <div className="space-y-5">
               {blogPosts.map((post, index) => (
                 <div key={index} className="group">
-                  <div className="text-sm text-gray-500 mb-0.5">{post.date}</div>
+                  <div className="text-sm text-gray-500 mb-1">{post.date}</div>
                   <a 
                     href={post.url} 
-                    className="text-gray-900 hover:text-gray-600 transition-colors"
+                    className="text-xl text-gray-900 hover:text-gray-600 transition-colors"
                   >
                     {post.title}
                   </a>
@@ -48,8 +49,8 @@ const App = () => {
           </section>
 
           <section className="mb-16">
-            <h2 className="text-lg font-normal mb-4">Work</h2>
-            <ul className="list-disc pl-4 space-y-3 text-gray-700">
+            <h2 className="text-2xl font-medium mb-6 text-gray-900">Work</h2>
+            <ul className="list-disc pl-4 space-y-4 text-lg text-gray-800">
               <li>
                 Co-founded Bottle.com with Will. All-in-one software for food entrepreneurs 
                 to sell online. Partnered with local business owners to help them create 
@@ -76,35 +77,30 @@ const App = () => {
           </section>
 
           <section className="mb-16">
-            <h2 className="text-lg font-normal mb-4">About</h2>
+            <h2 className="text-2xl font-medium mb-6 text-gray-900">About</h2>
             <div className="space-y-4">
               <img 
                 src="/images/Family photo.png"
                 alt="Andy with family by wooden wall" 
                 className="w-full rounded-lg object-cover"
               />
-              <p className="text-gray-700">
-                Live outside Atlanta with my amazing wife, Meredith, and our three kids. 
+              <p className="text-lg text-gray-800">
+                Live outside Atlanta.
               </p>
             </div>
           </section>
 
           <section className="mb-16">
-            <h2 className="text-lg font-normal mb-4">Connect</h2>
-            <ul className="list-disc pl-4 space-y-1.5 text-gray-700">
+            <h2 className="text-2xl font-medium mb-6 text-gray-900">Connect</h2>
+            <ul className="list-disc pl-4 space-y-3 text-lg text-gray-800">
               <li>
-                <a href="#" className="hover:text-gray-900 transition-colors">
-                  Twitter
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-gray-900 transition-colors">
+                <a 
+                  href="https://linkedin.com/in/andyblechman" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="hover:text-gray-600 transition-colors"
+                >
                   LinkedIn
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-gray-900 transition-colors">
-                  Email
                 </a>
               </li>
             </ul>

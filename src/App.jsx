@@ -25,8 +25,7 @@ const App = () => {
         <header className="mb-16">
           <h1 className="text-3xl font-normal mb-6">Andy Blechman</h1>
           <p className="text-gray-700 leading-relaxed">
-            I'm primarily interested in helping local businesses thrive through better technology. 
-            Previously co-founded Bottle.com, helping food entrepreneurs sell online and grow their businesses.
+            I've spent the last 10 years helping small businesses feed helthy food to their commmunities as the Co-founder of Bottle.com.  Currently exploring the intersection of psyhcology, physiology, and sports as it related to the built environment. 
           </p>
         </header>
 
@@ -85,7 +84,7 @@ const App = () => {
                 className="w-full rounded-lg object-cover"
               />
               <p className="text-gray-700">
-                Live outside Atlanta.
+                Live outside Atlanta with my amazing wife, Meredith, and our three kids. 
               </p>
             </div>
           </section>

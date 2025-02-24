@@ -57,4 +57,58 @@ const App = () => {
                 better businesses. (~10M healthy meals sold)
               </li>
               <li>
-                Launched Southfork in Atlanta, a virtu
+                Launched Southfork in Atlanta, a virtual cafeteria concept for companies. 
+                Learned about food delivery before pivoting to Bottle.
+              </li>
+              <li>
+                Two tours at SiteCompli with Jason and Ross. First helping grow from 5 to ~20 
+                employees, then during scaling post-capital injection.
+              </li>
+              <li>
+                Pre-revenue and pre-funding at Accordion. Learned what it takes to start a business. 
+                Wore a lot of hats but technically was the COO where I focused on staffing, recruiting, 
+                and business operations.
+              </li>
+              <li>
+                Started off in finance because it was what my friends in college were doing. 
+                Wish I'd been more thoughtful here, but it worked out.
+              </li>
+            </ul>
+          </section>
+
+          <section className="mb-24">
+            <h2 className="text-2xl font-normal mb-8 text-gray-900">About</h2>
+            <div className="space-y-6">
+              <img 
+                src="/images/Family photo.png"
+                alt="Andy with family by wooden wall" 
+                className="w-full rounded-lg object-cover"
+              />
+              <p className="text-lg text-gray-800">
+                Live outside Atlanta.
+              </p>
+            </div>
+          </section>
+
+          <section className="mb-24">
+            <h2 className="text-2xl font-normal mb-8 text-gray-900">Connect</h2>
+            <ul className="list-disc pl-5 space-y-4 text-lg text-gray-800">
+              <li>
+                <a 
+                  href="https://linkedin.com/in/andyblechman" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="hover:text-gray-600 transition-colors"
+                >
+                  LinkedIn
+                </a>
+              </li>
+            </ul>
+          </section>
+        </main>
+      </div>
+    </div>
+  )
+}
+
+export default App

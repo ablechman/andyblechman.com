@@ -84,7 +84,7 @@ const App = () => {
                 className="w-full rounded-lg object-cover"
               />
               <p>
-                Live outside Atlanta.
+                Live outside Atlanta with my wife, Meredith, and our three amazing kids.
               </p>
             </div>
           </section>

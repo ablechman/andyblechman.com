@@ -21,16 +21,16 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-[#f8f5f1] font-serif text-gray-900">
-      <div className="max-w-[550px] mx-auto pt-20 pb-20 px-4">
-        <header className="mb-24">
-          <h1 className="text-4xl font-normal mb-8">Andy Blechman</h1>
+      <div className="max-w-[550px] mx-auto pt-24 pb-20 px-4">
+        <header className="mb-32">
+          <h1 className="text-4xl font-normal mb-10">Andy Blechman</h1>
           <p className="text-xl leading-relaxed">
             Cofounder of Bottle.com, a business-in-a-box for local food entrepreneurs. Currently I'm interested in the ways physiology and psychology affect human performance. 
           </p>
         </header>
 
         <main>
-          <section className="mb-24">
+          <section className="mb-32">
             <h2 className="text-2xl font-normal mb-8">Featured Writing</h2>
             <div className="space-y-6">
               {blogPosts.map((post, index) => (
@@ -47,7 +47,7 @@ const App = () => {
             </div>
           </section>
 
-          <section className="mb-24">
+          <section className="mb-32">
             <h2 className="text-2xl font-normal mb-8">Work</h2>
             <ul className="list-disc pl-5 space-y-6">
               <li className="text-xl leading-relaxed">
@@ -75,7 +75,7 @@ const App = () => {
             </ul>
           </section>
 
-          <section className="mb-24">
+          <section className="mb-32">
             <h2 className="text-2xl font-normal mb-8">About</h2>
             <div className="space-y-6">
               <img 
@@ -89,7 +89,7 @@ const App = () => {
             </div>
           </section>
 
-          <section className="mb-24">
+          <section className="mb-32">
             <h2 className="text-2xl font-normal mb-8">Connect</h2>
             <ul className="list-disc pl-5 space-y-4">
               <li className="text-xl leading-relaxed">

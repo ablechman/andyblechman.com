@@ -25,12 +25,12 @@ const App = () => {
         <header className="mb-20">
           <h1 className="text-4xl font-normal mb-10">Andy Blechman</h1>
           <p className="text-xl leading-relaxed">
-            Cofounder of <a href="https://bottle.com" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-300 hover:decoration-gray-600 transition-colors">Bottle.com</a>, a business-in-a-box for local food entrepreneurs. Currently I'm interested in the ways physiology and psychology affect human performance. 
+            Cofounder of <a href="https://bottle.com" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">Bottle.com</a>, a business-in-a-box for local food entrepreneurs. Currently I'm interested in the ways physiology and psychology affect human performance. 
           </p>
         </header>
 
         <main>
-          <section className="mb-32">
+          <section className="mb-20">
             <h2 className="text-2xl font-normal mb-8">Featured Writing</h2>
             <div className="space-y-6">
               {blogPosts.map((post, index) => (
@@ -38,7 +38,7 @@ const App = () => {
                   <div className="text-sm text-gray-500 mb-1">{post.date}</div>
                   <a 
                     href={post.url} 
-                    className="text-xl underline decoration-gray-300 hover:decoration-gray-600 transition-colors"
+                    className="text-xl underline decoration-gray-500 hover:decoration-gray-900 font-medium"
                   >
                     {post.title}
                   </a>
@@ -47,11 +47,11 @@ const App = () => {
             </div>
           </section>
 
-          <section className="mb-32">
+          <section className="mb-20">
             <h2 className="text-2xl font-normal mb-8">Work</h2>
             <ul className="list-disc pl-5 space-y-6">
               <li className="text-xl leading-relaxed">
-                Co-founded Bottle.com with <a href="https://www.secondbreakfast.co/" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-300 hover:decoration-gray-600 transition-colors">Will</a>. All-in-one software for food entrepreneurs 
+                Co-founded Bottle.com with <a href="https://www.secondbreakfast.co/" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">Will</a>. All-in-one software for food entrepreneurs 
                 to sell online. Partnered with local business owners to help them create 
                 better businesses. (~10M healthy meals sold)
               </li>
@@ -60,11 +60,11 @@ const App = () => {
                 Learned about food delivery before pivoting to Bottle.
               </li>
               <li className="text-xl leading-relaxed">
-                Two tours at SiteCompli with <a href="https://www.linkedin.com/in/jgnyc/" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-300 hover:decoration-gray-600 transition-colors">Jason</a> and <a href="https://www.linkedin.com/in/rossgoldenberg/" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-300 hover:decoration-gray-600 transition-colors">Ross</a>. First helping grow from 5 to ~20 
+                Two tours at SiteCompli with <a href="https://www.linkedin.com/in/jgnyc/" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">Jason</a> and <a href="https://www.linkedin.com/in/rossgoldenberg/" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">Ross</a>. First helping grow from 5 to ~20 
                 employees, then during scaling post-capital injection.
               </li>
               <li className="text-xl leading-relaxed">
-                Pre-revenue and pre-funding at <a href="https://accordion.com" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-300 hover:decoration-gray-600 transition-colors">Accordion</a>. Learned what it takes to start a business. 
+                Pre-revenue and pre-funding at <a href="https://accordion.com" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">Accordion</a>. Learned what it takes to start a business. 
                 Wore a lot of hats but technically was the COO where I focused on staffing, recruiting, 
                 and business operations.
               </li>
@@ -75,7 +75,7 @@ const App = () => {
             </ul>
           </section>
 
-          <section className="mb-32">
+          <section className="mb-20">
             <h2 className="text-2xl font-normal mb-8">About</h2>
             <div className="space-y-6">
               <img 
@@ -84,12 +84,12 @@ const App = () => {
                 className="w-full rounded-lg object-cover"
               />
               <p className="text-xl leading-relaxed">
-                Live outside Atlanta with my wife, <a href="https://www.linkedin.com/in/meredith-blechman/" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-300 hover:decoration-gray-600 transition-colors">Meredith</a>, and our three amazing kids.
+                Live outside Atlanta with my wife, <a href="https://www.linkedin.com/in/meredith-blechman/" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">Meredith</a>, and our three amazing kids.
               </p>
             </div>
           </section>
 
-          <section className="mb-32">
+          <section className="mb-20">
             <h2 className="text-2xl font-normal mb-8">Connect</h2>
             <ul className="list-disc pl-5 space-y-4">
               <li className="text-xl leading-relaxed">
@@ -97,7 +97,7 @@ const App = () => {
                   href="https://linkedin.com/in/andyblechman" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="underline decoration-gray-300 hover:decoration-gray-600 transition-colors"
+                  className="underline decoration-gray-500 hover:decoration-gray-900 font-medium"
                 >
                   LinkedIn
                 </a>

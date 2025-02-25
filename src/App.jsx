@@ -25,8 +25,7 @@ const App = () => {
         <header className="mb-20">
           <h1 className="text-4xl font-normal mb-8">Andy Blechman</h1>
           <p className="text-xl leading-relaxed">
-            I'm primarily interested in helping local businesses thrive through better technology. 
-            Previously co-founded Bottle.com, helping food entrepreneurs sell online and grow their businesses.
+          Cofounder of Bottle.com, a business-in-a-box for local food entrepreneurs. Currently I'm interested in the ways physiology and psychology affect human performance. 
           </p>
         </header>
 

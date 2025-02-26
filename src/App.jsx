@@ -13,6 +13,7 @@ const App = () => {
         include: ['tags']
       })
       .then(posts => {
+        console.log('Fetched posts:', posts); // Log the posts to inspect URLs
         const formattedPosts = posts.map(post => ({
           date: new Date(post.published_at).toLocaleDateString('en-US', {
             year: 'numeric',
@@ -34,17 +35,17 @@ const App = () => {
           {
             date: "2024 MAR 15",
             title: "AI vs. Aid to Consciousness vs. Super-intelligence vs. AI",
-            url: "#"
+            url: "https://andys-blog.ghost.io/some-post"
           },
           {
             date: "2024 NOV 14", 
             title: "My experience Hypothesis in SF",
-            url: "#"
+            url: "https://andys-blog.ghost.io/another-post"
           },
           {
             date: "2024 FEB 3",
             title: "Decentralization is a narrative mirage",
-            url: "#"
+            url: "https://andys-blog.ghost.io/third-post"
           }
         ]);
       });
@@ -71,7 +72,9 @@ const App = () => {
                   <div key={index} className="group">
                     <div className="text-sm text-gray-500 mb-1">{post.date}</div>
                     <a 
-                      href="https://andys-blog.ghost.io"
+                      href={post.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-xl underline decoration-gray-500 hover:decoration-gray-900 font-medium"
                     >
                       {post.title}

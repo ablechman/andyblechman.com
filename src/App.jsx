@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import api from './utils/ghost';
+import api from "./utils/ghost";
 
 const App = () => {
   const [blogPosts, setBlogPosts] = useState([]);

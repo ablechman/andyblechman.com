@@ -20,7 +20,7 @@ const App = () => {
             day: 'numeric'
           }).toUpperCase(),
           title: post.title,
-          url: `/blog/${post.slug}` // Format URL to point to local blog
+          url: post.url // Use the full URL directly from the Ghost API
         }));
         
         setBlogPosts(formattedPosts);
@@ -72,6 +72,8 @@ const App = () => {
                     <div className="text-sm text-gray-500 mb-1">{post.date}</div>
                     <a 
                       href={post.url} 
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-xl underline decoration-gray-500 hover:decoration-gray-900 font-medium"
                     >
                       {post.title}

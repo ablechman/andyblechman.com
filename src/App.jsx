@@ -1,23 +1,54 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import api from './utils/ghost';
 
 const App = () => {
-  const blogPosts = [
-    {
-      date: "2024 MAR 15",
-      title: "AI vs. Aid to Consciousness vs. Super-intelligence vs. AI",
-      url: "#"
-    },
-    {
-      date: "2024 NOV 14", 
-      title: "My experience Hypothesis in SF",
-      url: "#"
-    },
-    {
-      date: "2024 FEB 3",
-      title: "Decentralization is a narrative mirage",
-      url: "#"
-    }
-  ]
+  const [blogPosts, setBlogPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Fetch posts from Ghost
+    api.posts
+      .browse({
+        limit: 3,
+        include: ['tags']
+      })
+      .then(posts => {
+        const formattedPosts = posts.map(post => ({
+          date: new Date(post.published_at).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short', 
+            day: 'numeric'
+          }).toUpperCase(),
+          title: post.title,
+          url: `/blog/${post.slug}` // Format URL to point to local blog
+        }));
+        
+        setBlogPosts(formattedPosts);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error(err);
+        setLoading(false);
+        // Keep the hardcoded posts as fallback
+        setBlogPosts([
+          {
+            date: "2024 MAR 15",
+            title: "AI vs. Aid to Consciousness vs. Super-intelligence vs. AI",
+            url: "#"
+          },
+          {
+            date: "2024 NOV 14", 
+            title: "My experience Hypothesis in SF",
+            url: "#"
+          },
+          {
+            date: "2024 FEB 3",
+            title: "Decentralization is a narrative mirage",
+            url: "#"
+          }
+        ]);
+      });
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#f8f5f1] font-serif text-gray-900">
@@ -32,19 +63,23 @@ const App = () => {
         <main>
           <section className="mb-20">
             <h2 className="text-2xl font-normal mb-8">Featured Writing</h2>
-            <div className="space-y-6">
-              {blogPosts.map((post, index) => (
-                <div key={index} className="group">
-                  <div className="text-sm text-gray-500 mb-1">{post.date}</div>
-                  <a 
-                    href={post.url} 
-                    className="text-xl underline decoration-gray-500 hover:decoration-gray-900 font-medium"
-                  >
-                    {post.title}
-                  </a>
-                </div>
-              ))}
-            </div>
+            {loading ? (
+              <p>Loading posts...</p>
+            ) : (
+              <div className="space-y-6">
+                {blogPosts.map((post, index) => (
+                  <div key={index} className="group">
+                    <div className="text-sm text-gray-500 mb-1">{post.date}</div>
+                    <a 
+                      href={post.url} 
+                      className="text-xl underline decoration-gray-500 hover:decoration-gray-900 font-medium"
+                    >
+                      {post.title}
+                    </a>
+                  </div>
+                ))}
+              </div>
+            )}
           </section>
 
           <section className="mb-20">
@@ -110,4 +145,4 @@ const App = () => {
   )
 }
 
-export default App
+export default App;

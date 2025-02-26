@@ -71,7 +71,7 @@ const App = () => {
                   <div key={index} className="group">
                     <div className="text-sm text-gray-500 mb-1">{post.date}</div>
                     <a 
-                      href="/blog"
+                      href="https://andys-blog.ghost.io"
                       className="text-xl underline decoration-gray-500 hover:decoration-gray-900 font-medium"
                     >
                       {post.title}
@@ -139,7 +139,7 @@ const App = () => {
               </li>
               <li className="text-xl leading-relaxed">
                 <a 
-                  href="/blog"
+                  href="https://andys-blog.ghost.io"
                   className="underline decoration-gray-500 hover:decoration-gray-900 font-medium"
                 >
                   Blog

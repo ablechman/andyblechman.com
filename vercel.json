@@ -9,5 +9,16 @@
       "source": "/blog/:path*",
       "destination": "https://andys-blog.ghost.io/:path*"
     }
+  ],
+  "headers": [
+    {
+      "source": "/blog",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "https://www.andyblechman.com"
+        }
+      ]
+    }
   ]
 }

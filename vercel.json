@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/blog",
-      "destination": "https://andys-blog.ghost.io"
+      "destination": "https://andys-blog.ghost.io/ghost"
     },
     {
       "source": "/blog/:path*",

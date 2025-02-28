@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import api from "./ghost";
+import api from './ghost';
 
 const App = () => {
   const [blogPosts, setBlogPosts] = useState([]);
@@ -7,13 +7,14 @@ const App = () => {
 
   useEffect(() => {
     // Fetch posts from Ghost
+    console.log('Attempting to fetch posts from Ghost...');
     api.posts
       .browse({
         limit: 3,
         include: ['tags']
       })
       .then(posts => {
-        console.log('Fetched posts:', posts); // Log the posts to inspect URLs
+        console.log('Posts received:', posts);
         const formattedPosts = posts.map(post => ({
           date: new Date(post.published_at).toLocaleDateString('en-US', {
             year: 'numeric',
@@ -21,31 +22,31 @@ const App = () => {
             day: 'numeric'
           }).toUpperCase(),
           title: post.title,
-          url: post.url // Use the full URL directly from the Ghost API
+          url: `/blog/${post.slug}`
         }));
         
         setBlogPosts(formattedPosts);
         setLoading(false);
       })
       .catch(err => {
-        console.error(err);
+        console.error('Error fetching posts:', err);
         setLoading(false);
         // Keep the hardcoded posts as fallback
         setBlogPosts([
           {
             date: "2024 MAR 15",
             title: "AI vs. Aid to Consciousness vs. Super-intelligence vs. AI",
-            url: "https://andys-blog.ghost.io/some-post"
+            url: "#"
           },
           {
             date: "2024 NOV 14", 
             title: "My experience Hypothesis in SF",
-            url: "https://andys-blog.ghost.io/another-post"
+            url: "#"
           },
           {
             date: "2024 FEB 3",
             title: "Decentralization is a narrative mirage",
-            url: "https://andys-blog.ghost.io/third-post"
+            url: "#"
           }
         ]);
       });
@@ -72,9 +73,7 @@ const App = () => {
                   <div key={index} className="group">
                     <div className="text-sm text-gray-500 mb-1">{post.date}</div>
                     <a 
-                      href={post.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href={post.url} 
                       className="text-xl underline decoration-gray-500 hover:decoration-gray-900 font-medium"
                     >
                       {post.title}
@@ -138,14 +137,6 @@ const App = () => {
                   className="underline decoration-gray-500 hover:decoration-gray-900 font-medium"
                 >
                   LinkedIn
-                </a>
-              </li>
-              <li className="text-xl leading-relaxed">
-                <a 
-                  href="https://andys-blog.ghost.io"
-                  className="underline decoration-gray-500 hover:decoration-gray-900 font-medium"
-                >
-                  Blog
                 </a>
               </li>
             </ul>

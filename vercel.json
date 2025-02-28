@@ -1,0 +1,15 @@
+{
+    "version": 2,
+    "redirects": [
+      {
+        "source": "/blog",
+        "destination": "https://andys-blog.ghost.io/",
+        "permanent": false
+      },
+      {
+        "source": "/blog/:path*",
+        "destination": "https://andys-blog.ghost.io/:path*",
+        "permanent": false
+      }
+    ]
+  }

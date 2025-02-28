@@ -9,16 +9,5 @@
       "source": "/blog/:path*",
       "destination": "https://andys-blog.ghost.io/:path*"
     }
-  ],
-  "headers": [
-    {
-      "source": "/blog",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex"
-        }
-      ]
-    }
   ]
 }

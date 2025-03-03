@@ -54,6 +54,20 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-[#f8f5f1] font-serif text-gray-900">
+      {/* Navbar matching site's design ethos */}
+      <nav className="border-b border-gray-200 bg-[#f8f5f1] px-4 py-3">
+        <div className="max-w-[550px] mx-auto flex justify-between items-center">
+          <div>
+            <a href="/" className="text-sm font-medium text-gray-900 hover:text-gray-600">Andy Blechman</a>
+          </div>
+          <div className="flex items-center space-x-6">
+            <a href="/" className="text-sm font-medium text-gray-900 hover:text-gray-600">Home</a>
+            <a href="/posts" className="text-sm font-medium text-gray-900 hover:text-gray-600">Posts</a>
+            <a href="/subscribe" className="text-sm font-medium text-gray-900 underline decoration-gray-500 hover:decoration-gray-900">Subscribe</a>
+          </div>
+        </div>
+      </nav>
+      
       <div className="max-w-[550px] mx-auto pt-10 pb-16 px-4">
         <header className="mb-10">
           <h1 className="text-3xl font-normal mb-6">Andy Blechman</h1>

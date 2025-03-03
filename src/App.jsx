@@ -83,12 +83,21 @@ const App = () => {
       </nav>
       
       <div className="max-w-[550px] mx-auto pt-10 pb-10 px-4">
-        <header className="mb-10">
-          <h1 className="text-3xl font-normal mb-6">Andy Blechman</h1>
-          <p className="text-lg leading-relaxed">
-            I'm the cofounder of <a href="https://bottle.com" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">Bottle.com</a>, a business-in-a-box for local food entrepreneurs. I've spent the bulk of my career as a founder building companies from zero to one. Currently, most interested in how physilogical behaviors like sleep and exercise can improve human performance at work and in sports. 
-          </p>
-        </header>
+  <header className="mb-10">
+    <h1 className="text-3xl font-normal mb-6">Andy Blechman</h1>
+    <div className="text-lg leading-relaxed space-y-4">
+      <p>
+        I'm the cofounder of <a href="https://bottle.com" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">Bottle.com</a>, a business-in-a-box for local food entrepreneurs.
+      </p>
+      <p>
+        I've spent the bulk of my <a href="#work" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">career</a> as a founder building companies from zero to one.
+      </p>
+      <p>
+        Currently, I'm most interested in how physiological behaviors like sleep and exercise can improve human performance at work and in sports.
+      </p>
+    </div>
+  </header>
+</div>
 
         <main>
           <section className="mb-12">

@@ -89,8 +89,11 @@ const App = () => {
           <div className="flex items-center space-x-6">
             <a href="https://blog.andyblechman.com" className="text-sm font-medium text-gray-900 hover:text-gray-600">Posts</a>
             <button 
-              onClick={() => setShowSubscribe(true)} 
               className="text-sm font-medium text-gray-900 underline decoration-gray-500 hover:decoration-gray-900"
+              onClick={(e) => {
+                e.preventDefault();
+                setShowSubscribe(true);
+              }}
             >
               Subscribe
             </button>
@@ -100,23 +103,26 @@ const App = () => {
       
       {/* Subscribe Overlay */}
       {showSubscribe && (
-        <div 
-          className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4"
-          onClick={(e) => {
-            // Only close if clicking the backdrop (not the modal itself)
-            if (e.target === e.currentTarget) {
+        <div className="fixed inset-0 z-50">
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0 bg-black bg-opacity-50"
+            onClick={(e) => {
               e.preventDefault();
+              e.stopPropagation();
               setShowSubscribe(false);
-            }
-          }}
-        >
-          <div className="bg-white rounded-lg shadow-xl w-full max-w-md relative p-6" onClick={(e) => e.stopPropagation()}>
+            }}
+          ></div>
+          
+          {/* Modal Content */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-xl w-full max-w-md p-6">
             <button 
+              className="absolute top-3 right-3 text-gray-800 hover:text-gray-600"
               onClick={(e) => {
                 e.preventDefault();
+                e.stopPropagation();
                 setShowSubscribe(false);
               }}
-              className="absolute top-3 right-3 text-gray-800 hover:text-gray-600"
               aria-label="Close subscription form"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

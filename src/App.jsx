@@ -59,8 +59,8 @@ const App = () => {
       const script = document.createElement('script');
       script.src = 'https://cdn.jsdelivr.net/ghost/signup-form@~0.2/umd/signup-form.min.js';
       script.async = true;
-      script.dataset.backgroundColor = '#08090c';
-      script.dataset.textColor = '#FFFFFF';
+      script.dataset.backgroundColor = '#FFFFFF';
+      script.dataset.textColor = '#000000';
       script.dataset.buttonColor = '#000000';
       script.dataset.buttonTextColor = '#FFFFFF';
       script.dataset.title = 'Andy Blechman';
@@ -101,17 +101,19 @@ const App = () => {
       {/* Subscribe Overlay */}
       {showSubscribe && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg shadow-xl w-full max-w-md relative">
+          <div className="bg-white rounded-lg shadow-xl w-full max-w-md relative p-6">
             <button 
               onClick={() => setShowSubscribe(false)}
-              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+              className="absolute top-3 right-3 text-gray-800 hover:text-gray-600"
               aria-label="Close subscription form"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-            <div id="subscribe-container" style={{ height: '40vmin', minHeight: '360px' }}></div>
+            <h2 className="text-2xl font-normal text-center mb-4">Subscribe to Newsletter</h2>
+            <p className="text-sm text-gray-600 text-center mb-6">Stay updated with my latest writing and thoughts</p>
+            <div id="subscribe-container" style={{ height: '40vmin', minHeight: '200px' }}></div>
           </div>
         </div>
       )}

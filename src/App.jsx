@@ -86,7 +86,7 @@ const App = () => {
         <header className="mb-10">
           <h1 className="text-3xl font-normal mb-6">Andy Blechman</h1>
           <p className="text-lg leading-relaxed">
-            Cofounder of <a href="https://bottle.com" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">Bottle.com</a>, a business-in-a-box for local food entrepreneurs. Currently I'm interested in the ways physiology and psychology affect human performance. 
+            I'm the cofounder of <a href="https://bottle.com" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">Bottle.com</a>, a business-in-a-box for local food entrepreneurs. I've spent the bulk of my career as a founder building companies from zero to one. Currently, most interested in how physilogical behaviors like sleep and exercise can improve human performance at work and in sports. 
           </p>
         </header>
 
@@ -116,7 +116,7 @@ const App = () => {
             <h2 className="text-xl font-normal mb-6">Work</h2>
             <ul className="list-disc pl-5 space-y-4">
               <li className="text-lg leading-relaxed">
-                Co-founded Bottle.com with <a href="https://www.secondbreakfast.co/" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">Will</a>. All-in-one software for food entrepreneurs 
+                Cofounded Bottle.com with <a href="https://www.secondbreakfast.co/" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">Will</a>. All-in-one software for food entrepreneurs 
                 to sell online. Partnered with local business owners to help them create 
                 better businesses. (~10M healthy meals sold)
               </li>
@@ -130,7 +130,7 @@ const App = () => {
               </li>
               <li className="text-lg leading-relaxed">
                 Pre-revenue and pre-funding at <a href="https://accordion.com" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">Accordion</a>. Learned what it takes to start a business. 
-                Wore a lot of hats but technically was the COO where I focused on staffing, recruiting, 
+                Wore a lot of hats as the COO where I focused on staffing, recruiting, 
                 and business operations.
               </li>
               <li className="text-lg leading-relaxed">
@@ -149,7 +149,7 @@ const App = () => {
                 className="w-full rounded-lg object-cover"
               />
               <p className="text-lg leading-relaxed">
-                Live outside Atlanta with my wife, <a href="https://www.linkedin.com/in/meredith-blechman/" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">Meredith</a>, and our three amazing kids.
+                I live outside Atlanta with my wife, <a href="https://www.linkedin.com/in/meredith-blechman/" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">Meredith</a>, and our three amazing kids. In 2022, we moved to a small community 30 minutes south of ATL. It's an amazing place to raise a family. It's a community filled with wonderful people and an incredible trail running system. 
               </p>
             </div>
           </section>

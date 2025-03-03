@@ -83,21 +83,20 @@ const App = () => {
       </nav>
       
       <div className="max-w-[550px] mx-auto pt-10 pb-10 px-4">
-  <header className="mb-10">
-    <h1 className="text-3xl font-normal mb-6">Andy Blechman</h1>
-    <div className="text-lg leading-relaxed space-y-4">
-      <p>
-        I'm the cofounder of <a href="https://bottle.com" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">Bottle.com</a>, a business-in-a-box for local food entrepreneurs.
-      </p>
-      <p>
-        I've spent the bulk of my <a href="#work" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">career</a> as a founder building companies from zero to one.
-      </p>
-      <p>
-        Currently, I'm most interested in how physiological behaviors like sleep and exercise can improve human performance at work and in sports.
-      </p>
-    </div>
-  </header>
-</div>
+        <header className="mb-10">
+          <h1 className="text-3xl font-normal mb-6">Andy Blechman</h1>
+          <div className="text-lg leading-relaxed space-y-4">
+            <p>
+              I'm the cofounder of <a href="https://bottle.com" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">Bottle.com</a>, a business-in-a-box for local food entrepreneurs.
+            </p>
+            <p>
+              I've spent the bulk of my <a href="#work" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">career</a> as a founder building companies from zero to one.
+            </p>
+            <p>
+              Currently, I'm most interested in how physiological behaviors like sleep and exercise can improve human performance at work and in sports.
+            </p>
+          </div>
+        </header>
 
         <main>
           <section className="mb-12">
@@ -121,7 +120,7 @@ const App = () => {
             )}
           </section>
 
-          <section className="mb-12">
+          <section id="work" className="mb-12">
             <h2 className="text-xl font-normal mb-6">Work</h2>
             <ul className="list-disc pl-5 space-y-4">
               <li className="text-lg leading-relaxed">
@@ -213,7 +212,7 @@ const App = () => {
         </main>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default App;

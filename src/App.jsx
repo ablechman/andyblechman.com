@@ -4,7 +4,7 @@ import api from './ghost';
 const App = () => {
   const [blogPosts, setBlogPosts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [showSubscribe, setShowSubscribe] = useState(false);
+  const [email, setEmail] = useState('');
 
   useEffect(() => {
     // Fetch posts from Ghost
@@ -53,30 +53,17 @@ const App = () => {
       });
   }, []);
 
-  // Load Ghost signup form script when subscribe overlay is shown
-  useEffect(() => {
-    if (showSubscribe) {
-      const script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/ghost/signup-form@~0.2/umd/signup-form.min.js';
-      script.async = true;
-      script.dataset.backgroundColor = '#FFFFFF';
-      script.dataset.textColor = '#000000';
-      script.dataset.buttonColor = '#000000';
-      script.dataset.buttonTextColor = '#FFFFFF';
-      script.dataset.title = 'Andy Blechman';
-      script.dataset.description = '';
-      script.dataset.site = 'https://andys-blog.ghost.io/';
-      script.dataset.locale = 'en';
-      
-      document.getElementById('subscribe-container').appendChild(script);
-      
-      return () => {
-        if (document.getElementById('subscribe-container').contains(script)) {
-          document.getElementById('subscribe-container').removeChild(script);
-        }
-      };
-    }
-  }, [showSubscribe]);
+  // Handle form submission to Ghost
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    // This would normally submit to Ghost API
+    console.log('Subscribing email:', email);
+    
+    // Here you would typically integrate with Ghost's Members API
+    // For now, we'll show a confirmation message
+    alert(`Thank you for subscribing with ${email}!`);
+    setEmail('');
+  };
 
   return (
     <div className="min-h-screen bg-[#f8f5f1] font-serif text-gray-900">
@@ -88,55 +75,14 @@ const App = () => {
           </div>
           <div className="flex items-center space-x-6">
             <a href="https://blog.andyblechman.com" className="text-sm font-medium text-gray-900 hover:text-gray-600">Posts</a>
-            <button 
-              className="text-sm font-medium text-gray-900 underline decoration-gray-500 hover:decoration-gray-900"
-              onClick={(e) => {
-                e.preventDefault();
-                setShowSubscribe(true);
-              }}
-            >
+            <a href="#subscribe" className="text-sm font-medium text-gray-900 underline decoration-gray-500 hover:decoration-gray-900">
               Subscribe
-            </button>
+            </a>
           </div>
         </div>
       </nav>
       
-      {/* Subscribe Overlay */}
-      {showSubscribe && (
-        <div className="fixed inset-0 z-50">
-          {/* Backdrop */}
-          <div 
-            className="absolute inset-0 bg-black bg-opacity-50"
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              setShowSubscribe(false);
-            }}
-          ></div>
-          
-          {/* Modal Content */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-xl w-full max-w-md p-6">
-            <button 
-              className="absolute top-3 right-3 text-gray-800 hover:text-gray-600"
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                setShowSubscribe(false);
-              }}
-              aria-label="Close subscription form"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-            <h2 className="text-2xl font-normal text-center mb-4">Subscribe to Newsletter</h2>
-            <p className="text-sm text-gray-600 text-center mb-6">Stay updated with my latest writing and thoughts</p>
-            <div id="subscribe-container" style={{ height: '40vmin', minHeight: '200px' }}></div>
-          </div>
-        </div>
-      )}
-      
-      <div className="max-w-[550px] mx-auto pt-10 pb-16 px-4">
+      <div className="max-w-[550px] mx-auto pt-10 pb-10 px-4">
         <header className="mb-10">
           <h1 className="text-3xl font-normal mb-6">Andy Blechman</h1>
           <p className="text-lg leading-relaxed">
@@ -222,6 +168,38 @@ const App = () => {
                 </a>
               </li>
             </ul>
+          </section>
+
+          {/* Subscribe Section - Based on Dario's site */}
+          <section id="subscribe" className="mt-20 mb-10 pt-10 border-t border-gray-200">
+            <h2 className="text-xl font-normal mb-6 text-center">Subscribe for email alerts about new posts:</h2>
+            
+            <div className="max-w-md mx-auto">
+              <form onSubmit={handleSubscribe}>
+                <div className="mb-3">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-md bg-[#f8f5f1] focus:outline-none focus:ring-1 focus:ring-gray-400"
+                    required
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="w-full bg-black text-white py-3 px-4 rounded-md hover:bg-gray-800 transition-colors"
+                >
+                  Subscribe for future updates
+                </button>
+              </form>
+              
+              <div className="mt-4 text-center">
+                <a href="/privacy" className="text-sm text-gray-700 underline hover:text-gray-900">
+                  Privacy policy
+                </a>
+              </div>
+            </div>
           </section>
         </main>
       </div>

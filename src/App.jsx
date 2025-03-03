@@ -4,6 +4,7 @@ import api from './ghost';
 const App = () => {
   const [blogPosts, setBlogPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showSubscribe, setShowSubscribe] = useState(false);
 
   useEffect(() => {
     // Fetch posts from Ghost
@@ -52,21 +53,68 @@ const App = () => {
       });
   }, []);
 
+  // Load Ghost signup form script when subscribe overlay is shown
+  useEffect(() => {
+    if (showSubscribe) {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/ghost/signup-form@~0.2/umd/signup-form.min.js';
+      script.async = true;
+      script.dataset.backgroundColor = '#08090c';
+      script.dataset.textColor = '#FFFFFF';
+      script.dataset.buttonColor = '#000000';
+      script.dataset.buttonTextColor = '#FFFFFF';
+      script.dataset.title = 'Andy Blechman';
+      script.dataset.description = '';
+      script.dataset.site = 'https://andys-blog.ghost.io/';
+      script.dataset.locale = 'en';
+      
+      document.getElementById('subscribe-container').appendChild(script);
+      
+      return () => {
+        if (document.getElementById('subscribe-container').contains(script)) {
+          document.getElementById('subscribe-container').removeChild(script);
+        }
+      };
+    }
+  }, [showSubscribe]);
+
   return (
     <div className="min-h-screen bg-[#f8f5f1] font-serif text-gray-900">
-      {/* Navbar matching site's design ethos */}
+      {/* Navbar */}
       <nav className="border-b border-gray-200 bg-[#f8f5f1] px-4 py-3">
         <div className="max-w-[550px] mx-auto flex justify-between items-center">
           <div>
-            <a href="/" className="text-sm font-medium text-gray-900 hover:text-gray-600">Andy Blechman</a>
+            <a href="https://andyblechman.com" className="text-sm font-medium text-gray-900 hover:text-gray-600">Home</a>
           </div>
           <div className="flex items-center space-x-6">
-            <a href="/" className="text-sm font-medium text-gray-900 hover:text-gray-600">Home</a>
-            <a href="/posts" className="text-sm font-medium text-gray-900 hover:text-gray-600">Posts</a>
-            <a href="/subscribe" className="text-sm font-medium text-gray-900 underline decoration-gray-500 hover:decoration-gray-900">Subscribe</a>
+            <a href="https://blog.andyblechman.com" className="text-sm font-medium text-gray-900 hover:text-gray-600">Posts</a>
+            <button 
+              onClick={() => setShowSubscribe(true)} 
+              className="text-sm font-medium text-gray-900 underline decoration-gray-500 hover:decoration-gray-900"
+            >
+              Subscribe
+            </button>
           </div>
         </div>
       </nav>
+      
+      {/* Subscribe Overlay */}
+      {showSubscribe && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-lg shadow-xl w-full max-w-md relative">
+            <button 
+              onClick={() => setShowSubscribe(false)}
+              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+              aria-label="Close subscription form"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <div id="subscribe-container" style={{ height: '40vmin', minHeight: '360px' }}></div>
+          </div>
+        </div>
+      )}
       
       <div className="max-w-[550px] mx-auto pt-10 pb-16 px-4">
         <header className="mb-10">

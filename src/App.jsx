@@ -53,6 +53,18 @@ const App = () => {
   }, []);
 
   // Handle scroll to subscribe section
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    // This would normally submit to Ghost API
+    console.log('Subscribing email:', email);
+    
+    // Here you would typically integrate with Ghost's Members API
+    // For now, we'll show a confirmation message
+    alert(`Thank you for subscribing with ${email}!`);
+    setEmail('');
+  };
+  
+  // Scroll to subscribe section function
   const scrollToSubscribe = (e) => {
     e.preventDefault();
     const subscribeSection = document.getElementById('subscribe');

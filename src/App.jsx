@@ -13,7 +13,8 @@ const App = () => {
       .browse({
         limit: 5, // Changed from 3 to 5 posts
         include: ['tags', 'authors'],
-        filter: 'tag:featured', // Add filter for featured tag
+        // Removed tag filter initially to ensure posts appear
+        // You can add it back later: filter: 'tag:featured',
         order: 'published_at DESC' // Ensure newest posts come first
       })
       .then(posts => {
@@ -51,7 +52,6 @@ const App = () => {
             title: "Decentralization is a narrative mirage",
             url: "https://blog.andyblechman.com/decentralization-narrative-mirage"
           },
-          // Added fallback posts to match the 5 post limit
           {
             date: "2024 JAN 20",
             title: "Building a resilient startup in uncertain times",
@@ -66,7 +66,6 @@ const App = () => {
       });
   }, []);
 
-  // Rest of the component code remains the same...
   // Handle form submission to Ghost
   const handleSubscribe = (e) => {
     e.preventDefault();

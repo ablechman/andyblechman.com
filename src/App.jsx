@@ -131,6 +131,17 @@ const App = () => {
                     </a>
                   </div>
                 ))}
+                
+                <div className="mt-6">
+                  <a 
+                    href="https://blog.andyblechman.com" 
+                    className="text-sm font-medium text-gray-900 underline decoration-gray-500 hover:decoration-gray-900"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Read more posts →
+                  </a>
+                </div>
               </div>
             )}
           </section>

@@ -150,21 +150,21 @@ const App = () => {
             <h2 className="text-xl font-normal mb-6">Work</h2>
             <ul className="list-disc pl-5 space-y-4">
               <li className="text-lg leading-relaxed">
-                2015 - 2025: Cofounded Bottle.com with <a href="https://www.secondbreakfast.co/" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">Will</a>, providing all-in-one software for food entrepreneurs 
+                2015 - 2025: I cofounded <a href="https://bottle.com" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">Bottle.com</a> with <a href="https://www.secondbreakfast.co/" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">Will</a>. We built all-in-one software for food entrepreneurs 
                 to sell online. We partnered with local business owners to help them create 
-                better businesses and to date have sold approximately 10M healthy meals.
+                better businesses and sell approximately 10M healthy meals.
               </li>
               <li className="text-lg leading-relaxed">
-                2014 - 2015: Launched Southfork in Atlanta, a virtual cafeteria concept for large companies.
-                I partnered with some of the top businesses in ATL and learned a ton about food delivery before pivoting to Bottle.
+                2014 - 2015: I launched Southfork in Atlanta, a virtual cafeteria concept for large companies.
+                I partnered with some of the top businesses in ATL. I learned a ton about food delivery before pivoting to Bottle.
               </li>
               <li className="text-lg leading-relaxed">
                 2012 - 2014: I had two tours at SiteCompli with <a href="https://www.linkedin.com/in/jgnyc/" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">Jason</a> and <a href="https://www.linkedin.com/in/rossgoldenberg/" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">Ross</a>. During my first tour, I helped put in place the system to grow headcount from 5 to about 20. 
                 I joined during my second year of business school to help with operations and hiring after a large raise.
               </li>
               <li className="text-lg leading-relaxed">
-                2009 - 2012: Cofounder at <a href="https://accordion.com" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">Accordion</a>, joining the company pre-revenue and pre-funding. 
-                I learned what it takes to start a business and get to product-market fit. I wore a lot of hats as the COO, where I focused on staffing, recruiting, 
+                2009 - 2012: I was a cofounder at <a href="https://accordion.com" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">Accordion</a>, joining the company pre-revenue and pre-funding. 
+                I learned what it takes to start a business and get to product-market fit. I wore a lot of hats as the COO where I focused on staffing, recruiting, 
                 and business operations. Accordion exited to Charlesbank in 2022.
               </li>
               <li className="text-lg leading-relaxed">

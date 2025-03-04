@@ -136,7 +136,95 @@ const App = () => {
             )}
           </section>
 
-          {/* Rest of the component remains the same */}
+          <section id="work" className="mb-12">
+            <h2 className="text-xl font-normal mb-6">Work</h2>
+            <ul className="list-disc pl-5 space-y-4">
+              <li className="text-lg leading-relaxed">
+                Cofounded Bottle.com with <a href="https://www.secondbreakfast.co/" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">Will</a>. All-in-one software for food entrepreneurs 
+                to sell online. Partnered with local business owners to help them create 
+                better businesses. (~10M healthy meals sold)
+              </li>
+              <li className="text-lg leading-relaxed">
+                Launched Southfork in Atlanta, a virtual cafeteria concept for companies. 
+                Learned about food delivery before pivoting to Bottle.
+              </li>
+              <li className="text-lg leading-relaxed">
+                Two tours at SiteCompli with <a href="https://www.linkedin.com/in/jgnyc/" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">Jason</a> and <a href="https://www.linkedin.com/in/rossgoldenberg/" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">Ross</a>. First helping grow from 5 to ~20 
+                employees, then during scaling post-capital injection.
+              </li>
+              <li className="text-lg leading-relaxed">
+                Pre-revenue and pre-funding at <a href="https://accordion.com" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">Accordion</a>. Learned what it takes to start a business. 
+                Wore a lot of hats as the COO where I focused on staffing, recruiting, 
+                and business operations.
+              </li>
+              <li className="text-lg leading-relaxed">
+                Started off in finance because it was what my friends in college were doing. 
+                Wish I'd been more thoughtful here, but it worked out.
+              </li>
+            </ul>
+          </section>
+
+          <section className="mb-12">
+            <h2 className="text-xl font-normal mb-6">About</h2>
+            <div className="space-y-4">
+              <img 
+                src="/images/Family photo.png"
+                alt="Andy with family by wooden wall" 
+                className="w-full rounded-lg object-cover"
+              />
+              <p className="text-lg leading-relaxed">
+                I live outside Atlanta with my wife, <a href="https://www.linkedin.com/in/meredith-blechman/" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">Meredith</a>, and our three amazing kids. In 2022, we moved to a small community 30 minutes south of ATL. It's an amazing place to raise a family, filled with wonderful people and an incredible trail running system. 
+              </p>
+            </div>
+          </section>
+
+          <section className="mb-12">
+            <h2 className="text-xl font-normal mb-6">Connect</h2>
+            <ul className="list-disc pl-5 space-y-3">
+              <li className="text-lg leading-relaxed">
+                <a 
+                  href="https://linkedin.com/in/andyblechman" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="underline decoration-gray-500 hover:decoration-gray-900 font-medium"
+                >
+                  LinkedIn
+                </a>
+              </li>
+            </ul>
+          </section>
+
+          {/* Subscribe Section - Based on Dario's site */}
+          <section id="subscribe" className="mt-20 mb-10 pt-10 border-t border-gray-200">
+            <h2 className="text-xl font-normal mb-6 text-center">Subscribe for email alerts about new posts:</h2>
+            
+            <div className="max-w-md mx-auto">
+              <form onSubmit={handleSubscribe}>
+                <div className="mb-3">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-md bg-[#f8f5f1] focus:outline-none focus:ring-1 focus:ring-gray-400"
+                    required
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="w-full bg-black text-white py-3 px-4 rounded-md hover:bg-gray-800 transition-colors"
+                >
+                  Subscribe for future updates
+                </button>
+              </form>
+              
+              <div className="mt-4 text-center">
+                <a href="/privacy" className="text-sm text-gray-700 underline hover:text-gray-900">
+                  Privacy policy
+                </a>
+              </div>
+            </div>
+          </section>
         </main>
       </div>
     </div>

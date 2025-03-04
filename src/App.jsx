@@ -194,6 +194,14 @@ const App = () => {
                   LinkedIn
                 </a>
               </li>
+              <li className="text-lg leading-relaxed">
+                <a 
+                  href="mailto:andrew.n.blechman@gmail.com" 
+                  className="underline decoration-gray-500 hover:decoration-gray-900 font-medium"
+                >
+                  andrew.n.blechman@gmail.com
+                </a>
+              </li>
             </ul>
           </section>
 

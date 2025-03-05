@@ -1,10 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import api from './ghost';
 
 const App = () => {
   const [blogPosts, setBlogPosts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const subscribeFormRef = useRef(null);
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formStatus, setFormStatus] = useState('idle'); // 'idle', 'submitting', 'success', 'error'
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     // Fetch posts from Ghost
@@ -66,39 +69,54 @@ const App = () => {
       });
   }, []);
 
-  // Initialize Ghost's subscription form after component mounts
-  useEffect(() => {
-    if (subscribeFormRef.current) {
-      // Create the script element for Ghost's subscription form
-      const script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/ghost/signup-form@~0.2/umd/signup-form.min.js';
-      script.async = true;
-      
-      // Add the data attributes that configure the form
-      script.dataset.backgroundColor = '#ffffff';
-      script.dataset.textColor = '#000000';
-      script.dataset.buttonColor = '#000000';
-      script.dataset.buttonTextColor = '#FFFFFF';
-      script.dataset.title = 'Andy Blechman';
-      script.dataset.description = '';
-      script.dataset.site = 'https://blog.andyblechman.com/';
-      script.dataset.locale = 'en';
-      
-      // Clear the container and append the script
-      subscribeFormRef.current.innerHTML = '';
-      subscribeFormRef.current.appendChild(script);
-      
-      // Cleanup when component unmounts
-      return () => {
-        if (subscribeFormRef.current) {
-          const scriptElement = subscribeFormRef.current.querySelector('script');
-          if (scriptElement) {
-            scriptElement.remove();
-          }
-        }
-      };
+  // Handle form submission to Ghost API
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+    
+    // Basic email validation
+    if (!email || !/\S+@\S+\.\S+/.test(email)) {
+      setFormStatus('error');
+      setErrorMessage('Please enter a valid email address.');
+      return;
     }
-  }, []);
+    
+    try {
+      // Show loading state
+      setFormStatus('submitting');
+      setIsSubmitting(true);
+      
+      // Call Ghost's Members API
+      const response = await fetch('https://blog.andyblechman.com/members/api/send-magic-link/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: email,
+          emailType: 'subscribe'
+        })
+      });
+      
+      if (response.ok) {
+        // On success
+        setFormStatus('success');
+        setEmail('');
+      } else {
+        // On error from server
+        const errorData = await response.json();
+        console.error('Subscription error:', errorData);
+        setFormStatus('error');
+        setErrorMessage(errorData.message || 'There was an error subscribing. Please try again.');
+      }
+    } catch (error) {
+      // On network/connection error
+      console.error('Subscription error:', error);
+      setFormStatus('error');
+      setErrorMessage('Connection error. Please check your internet and try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#f8f5f1] font-serif text-gray-900">
@@ -227,22 +245,54 @@ const App = () => {
             </ul>
           </section>
 
-          {/* Ghost Subscribe Section - Replacing the previous custom form */}
+          {/* Subscribe Section - With Original Styling but Connected to Ghost API */}
           <section id="subscribe" className="mt-20 mb-10 pt-10 border-t border-gray-200">
             <h2 className="text-xl font-normal mb-6 text-center">Subscribe for email alerts about new posts:</h2>
             
-            <div 
-              ref={subscribeFormRef}
-              className="max-w-md mx-auto" 
-              style={{ height: '40vmin', minHeight: '360px' }}
-            >
-              {/* Ghost's subscription form will be injected here */}
-            </div>
-            
-            <div className="mt-4 text-center">
-              <a href="/privacy" className="text-sm text-gray-700 underline hover:text-gray-900">
-                Privacy policy
-              </a>
+            <div className="max-w-md mx-auto">
+              {formStatus === 'success' ? (
+                <div className="bg-green-50 border border-green-200 rounded-md p-4 text-center">
+                  <p className="text-green-800">Thanks for subscribing! Please check your email to confirm.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubscribe}>
+                  <div className="mb-3">
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Enter your email"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-md bg-[#f8f5f1] focus:outline-none focus:ring-1 focus:ring-gray-400"
+                      required
+                      disabled={isSubmitting}
+                    />
+                  </div>
+                  
+                  {formStatus === 'error' && (
+                    <div className="mb-3 text-red-600 text-sm">
+                      {errorMessage}
+                    </div>
+                  )}
+                  
+                  <button
+                    type="submit"
+                    className={`w-full py-3 px-4 rounded-md transition-colors ${
+                      isSubmitting 
+                        ? 'bg-gray-500 text-white cursor-not-allowed'
+                        : 'bg-black text-white hover:bg-gray-800'
+                    }`}
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Subscribing...' : 'Subscribe for future updates'}
+                  </button>
+                </form>
+              )}
+              
+              <div className="mt-4 text-center">
+                <a href="/privacy" className="text-sm text-gray-700 underline hover:text-gray-900">
+                  Privacy policy
+                </a>
+              </div>
             </div>
           </section>
         </main>

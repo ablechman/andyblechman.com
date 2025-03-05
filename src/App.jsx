@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import api from './ghost';
 
 const App = () => {
   const [blogPosts, setBlogPosts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [email, setEmail] = useState('');
+  const subscribeFormRef = useRef(null);
 
   useEffect(() => {
     // Fetch posts from Ghost
@@ -66,17 +66,39 @@ const App = () => {
       });
   }, []);
 
-  // Handle form submission to Ghost
-  const handleSubscribe = (e) => {
-    e.preventDefault();
-    // This would normally submit to Ghost API
-    console.log('Subscribing email:', email);
-    
-    // Here you would typically integrate with Ghost's Members API
-    // For now, we'll show a confirmation message
-    alert(`Thank you for subscribing with ${email}!`);
-    setEmail('');
-  };
+  // Initialize Ghost's subscription form after component mounts
+  useEffect(() => {
+    if (subscribeFormRef.current) {
+      // Create the script element for Ghost's subscription form
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/ghost/signup-form@~0.2/umd/signup-form.min.js';
+      script.async = true;
+      
+      // Add the data attributes that configure the form
+      script.dataset.backgroundColor = '#ffffff';
+      script.dataset.textColor = '#000000';
+      script.dataset.buttonColor = '#000000';
+      script.dataset.buttonTextColor = '#FFFFFF';
+      script.dataset.title = 'Andy Blechman';
+      script.dataset.description = '';
+      script.dataset.site = 'https://blog.andyblechman.com/';
+      script.dataset.locale = 'en';
+      
+      // Clear the container and append the script
+      subscribeFormRef.current.innerHTML = '';
+      subscribeFormRef.current.appendChild(script);
+      
+      // Cleanup when component unmounts
+      return () => {
+        if (subscribeFormRef.current) {
+          const scriptElement = subscribeFormRef.current.querySelector('script');
+          if (scriptElement) {
+            scriptElement.remove();
+          }
+        }
+      };
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#f8f5f1] font-serif text-gray-900">
@@ -205,35 +227,22 @@ const App = () => {
             </ul>
           </section>
 
-          {/* Subscribe Section - Based on Dario's site */}
+          {/* Ghost Subscribe Section - Replacing the previous custom form */}
           <section id="subscribe" className="mt-20 mb-10 pt-10 border-t border-gray-200">
             <h2 className="text-xl font-normal mb-6 text-center">Subscribe for email alerts about new posts:</h2>
             
-            <div className="max-w-md mx-auto">
-              <form onSubmit={handleSubscribe}>
-                <div className="mb-3">
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-md bg-[#f8f5f1] focus:outline-none focus:ring-1 focus:ring-gray-400"
-                    required
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full bg-black text-white py-3 px-4 rounded-md hover:bg-gray-800 transition-colors"
-                >
-                  Subscribe for future updates
-                </button>
-              </form>
-              
-              <div className="mt-4 text-center">
-                <a href="/privacy" className="text-sm text-gray-700 underline hover:text-gray-900">
-                  Privacy policy
-                </a>
-              </div>
+            <div 
+              ref={subscribeFormRef}
+              className="max-w-md mx-auto" 
+              style={{ height: '40vmin', minHeight: '360px' }}
+            >
+              {/* Ghost's subscription form will be injected here */}
+            </div>
+            
+            <div className="mt-4 text-center">
+              <a href="/privacy" className="text-sm text-gray-700 underline hover:text-gray-900">
+                Privacy policy
+              </a>
             </div>
           </section>
         </main>

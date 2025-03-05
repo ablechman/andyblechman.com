@@ -4,21 +4,15 @@ import api from './ghost';
 const App = () => {
   const [blogPosts, setBlogPosts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [email, setEmail] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formStatus, setFormStatus] = useState('idle'); // 'idle', 'submitting', 'success', 'error'
-  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     // Fetch posts from Ghost
     console.log('Attempting to fetch posts from Ghost...');
     api.posts
       .browse({
-        limit: 5, // Changed from 3 to 5 posts
+        limit: 5,
         include: ['tags', 'authors'],
-        // Removed tag filter initially to ensure posts appear
-        // You can add it back later: filter: 'tag:featured',
-        order: 'published_at DESC' // Ensure newest posts come first
+        order: 'published_at DESC'
       })
       .then(posts => {
         console.log('Posts received:', posts);
@@ -29,7 +23,7 @@ const App = () => {
             day: 'numeric'
           }).toUpperCase(),
           title: post.title,
-          url: `https://blog.andyblechman.com/${post.slug}` // Fixed URL format with domain
+          url: `https://blog.andyblechman.com/${post.slug}`
         }));
         
         setBlogPosts(formattedPosts);
@@ -67,54 +61,31 @@ const App = () => {
           }
         ]);
       });
-  }, []);
-
-  // Handle form submission to Ghost API
-  const handleSubscribe = async (e) => {
-    e.preventDefault();
-    
-    // Basic email validation
-    if (!email || !/\S+@\S+\.\S+/.test(email)) {
-      setFormStatus('error');
-      setErrorMessage('Please enter a valid email address.');
-      return;
-    }
-    
-    try {
-      // Show loading state
-      setFormStatus('submitting');
-      setIsSubmitting(true);
       
-      // Call Ghost's Members API
-      const response = await fetch('https://blog.andyblechman.com/members/api/send-magic-link/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          email: email,
-          emailType: 'subscribe'
-        })
-      });
-      
-      if (response.ok) {
-        // On success
-        setFormStatus('success');
-        setEmail('');
-      } else {
-        // On error from server
-        const errorData = await response.json();
-        console.error('Subscription error:', errorData);
-        setFormStatus('error');
-        setErrorMessage(errorData.message || 'There was an error subscribing. Please try again.');
+    // Load Ghost's portal script
+    const script = document.createElement('script');
+    script.src = 'https://blog.andyblechman.com/ghost/portal.js';
+    script.async = true;
+    script.defer = true;
+    script.id = 'ghost-portal-script';
+    document.body.appendChild(script);
+    
+    return () => {
+      // Cleanup
+      const portalScript = document.getElementById('ghost-portal-script');
+      if (portalScript) {
+        portalScript.remove();
       }
-    } catch (error) {
-      // On network/connection error
-      console.error('Subscription error:', error);
-      setFormStatus('error');
-      setErrorMessage('Connection error. Please check your internet and try again.');
-    } finally {
-      setIsSubmitting(false);
+    };
+  }, []);
+  
+  // Function to trigger Ghost's subscription modal
+  const openSubscribeModal = (e) => {
+    e.preventDefault();
+    if (window.ghost) {
+      window.ghost.openSubscribe();
+    } else {
+      window.open('https://blog.andyblechman.com/#/portal/signup', '_blank');
     }
   };
 
@@ -245,48 +216,17 @@ const App = () => {
             </ul>
           </section>
 
-          {/* Subscribe Section - With Original Styling but Connected to Ghost API */}
+          {/* Subscribe Section - Using Ghost's native portal */}
           <section id="subscribe" className="mt-20 mb-10 pt-10 border-t border-gray-200">
             <h2 className="text-xl font-normal mb-6 text-center">Subscribe for email alerts about new posts:</h2>
             
             <div className="max-w-md mx-auto">
-              {formStatus === 'success' ? (
-                <div className="bg-green-50 border border-green-200 rounded-md p-4 text-center">
-                  <p className="text-green-800">Thanks for subscribing! Please check your email to confirm.</p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubscribe}>
-                  <div className="mb-3">
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Enter your email"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md bg-[#f8f5f1] focus:outline-none focus:ring-1 focus:ring-gray-400"
-                      required
-                      disabled={isSubmitting}
-                    />
-                  </div>
-                  
-                  {formStatus === 'error' && (
-                    <div className="mb-3 text-red-600 text-sm">
-                      {errorMessage}
-                    </div>
-                  )}
-                  
-                  <button
-                    type="submit"
-                    className={`w-full py-3 px-4 rounded-md transition-colors ${
-                      isSubmitting 
-                        ? 'bg-gray-500 text-white cursor-not-allowed'
-                        : 'bg-black text-white hover:bg-gray-800'
-                    }`}
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? 'Subscribing...' : 'Subscribe for future updates'}
-                  </button>
-                </form>
-              )}
+              <button
+                onClick={openSubscribeModal}
+                className="w-full bg-black text-white py-3 px-4 rounded-md hover:bg-gray-800 transition-colors"
+              >
+                Subscribe for future updates
+              </button>
               
               <div className="mt-4 text-center">
                 <a href="/privacy" className="text-sm text-gray-700 underline hover:text-gray-900">

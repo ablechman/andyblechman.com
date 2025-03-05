@@ -187,7 +187,7 @@ const App = () => {
                 className="w-full rounded-lg object-cover"
               />
               <p className="text-lg leading-relaxed">
-                I live outside Atlanta with my wife, <a href="https://www.linkedin.com/in/meredith-blechman/" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">Meredith</a>, and our three amazing kids. In 2022, we moved to a small community 30 minutes south of ATL. It's an amazing place to raise a family, filled with wonderful people and an incredible trail running system. 
+                I live outside Atlanta with my wife, <a href="https://www.linkedin.com/in/meredith-blechman/" target="_blank" rel="noopener noreferrer" className="underline decoration-gray-500 hover:decoration-gray-900 font-medium">Meredith</a>, and our three amazing kids. In 2022, we moved to a small community 30 minutes south of ATL. It's a great place to raise a family, filled with wonderful people and an incredible trail running system. 
               </p>
             </div>
           </section>

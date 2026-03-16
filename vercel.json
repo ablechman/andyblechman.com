@@ -1,12 +1,5 @@
 {
   "rewrites": [
-    {
-      "source": "/blog",
-      "destination": "https://andys-blog.ghost.io/ghost"
-    },
-    {
-      "source": "/blog/:path*",
-      "destination": "https://andys-blog.ghost.io/:path*"
-    }
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

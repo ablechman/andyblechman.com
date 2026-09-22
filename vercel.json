@@ -1,12 +1,24 @@
 {
-  "rewrites": [
+  "redirects": [
     {
-      "source": "/blog",
-      "destination": "https://andys-blog.ghost.io/ghost"
+      "source": "/coming-soon",
+      "has": [{ "type": "host", "value": "blog.andyblechman.com" }],
+      "destination": "https://andyblechman.com/blog/sohohouseforathletes",
+      "permanent": true
     },
     {
-      "source": "/blog/:path*",
-      "destination": "https://andys-blog.ghost.io/:path*"
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "blog.andyblechman.com" }],
+      "destination": "https://andyblechman.com/blog/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/blog/coming-soon",
+      "destination": "/blog/sohohouseforathletes",
+      "permanent": true
     }
+  ],
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

@@ -1,10 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-// Placeholder until Supabase is wired up: pretends to save the email.
+// Buttondown's public embed endpoint: no API key needed. It doesn't send CORS headers,
+// so the response is opaque and a request that goes out counts as success.
+const BUTTONDOWN_USERNAME = 'TODO';
+
 async function saveEmail(email) {
-  await new Promise((resolve) => setTimeout(resolve, 400));
-  return { ok: true, email };
+  await fetch(`https://buttondown.com/api/emails/embed-subscribe/${BUTTONDOWN_USERNAME}`, {
+    method: 'POST',
+    mode: 'no-cors',
+    body: new URLSearchParams({ email, embed: '1' }),
+  });
+  return { ok: true };
 }
 
 export function SubscribeForm({ autoFocus = false }) {
@@ -23,7 +30,11 @@ export function SubscribeForm({ autoFocus = false }) {
   };
 
   if (status === 'done') {
-    return <p className="text-base text-gray-700">Thanks. You'll get new posts by email.</p>;
+    return <p className="text-base text-gray-700">Almost there. Check your inbox to confirm.</p>;
+  }
+
+  if (status === 'error') {
+    return <p className="text-base text-gray-700">Something went wrong. Please try again later.</p>;
   }
 
   return (
@@ -45,7 +56,6 @@ export function SubscribeForm({ autoFocus = false }) {
       >
         {status === 'saving' ? 'Subscribing…' : 'Subscribe'}
       </button>
-      {status === 'error' && <span className="sr-only">Something went wrong. Try again.</span>}
     </form>
   );
 }

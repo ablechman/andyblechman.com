@@ -18,12 +18,14 @@ function loadPosts() {
     .filter((f) => f.endsWith('.md'))
     .map((f) => {
       const { data, content } = parseFrontmatter(readFileSync(join(POSTS_DIR, f), 'utf8'));
-      return { slug: slugFromPath(f), ...data, html: marked.parse(content) };
+      // Feed readers and emails need absolute URLs, so expand site-relative links.
+      const html = marked.parse(content).replace(/(href|src)="\//g, `$1="${SITE_URL}/`);
+      return { slug: slugFromPath(f), ...data, html };
     })
     .sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
-// Emits /rss.xml at build time so readers can subscribe without an email provider.
+// Emits /rss.xml at build time. Buttondown watches this feed to email new posts to subscribers.
 function rssPlugin() {
   return {
     name: 'rss',

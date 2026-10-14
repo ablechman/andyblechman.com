@@ -145,12 +145,6 @@ const Home = () => {
                 andrew.n.blechman@gmail.com
               </a>
             </li>
-            <li className="text-lg leading-relaxed">
-              <a href="/rss.xml" className={link}>
-                RSS feed
-              </a>{' '}
-              <span className="text-gray-500 text-base">for new posts</span>
-            </li>
           </ul>
         </section>
 

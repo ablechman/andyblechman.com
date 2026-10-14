@@ -36,13 +36,6 @@ const Blog = () => {
         <SubscribeBox />
       </div>
 
-      <p className="mt-4 text-sm text-gray-500">
-        Or follow via{' '}
-        <a href="/rss.xml" className="underline decoration-gray-500 hover:decoration-gray-900">
-          RSS
-        </a>
-        .
-      </p>
     </main>
   );
 };

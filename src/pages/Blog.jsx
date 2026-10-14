@@ -10,10 +10,7 @@ const Blog = () => {
 
   return (
     <main>
-      <h1 className="text-3xl font-normal mb-3">Posts</h1>
-      <p className="text-lg leading-relaxed text-gray-600 mb-10">
-        Notes on ideas I'm chewing on: health, sleep, food, and building companies.
-      </p>
+      <h1 className="text-3xl font-normal mb-10">Posts</h1>
 
       <div className="space-y-8">
         {posts.map((post) => (

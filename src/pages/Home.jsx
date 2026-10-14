@@ -38,29 +38,6 @@ const Home = () => {
       </header>
 
       <main>
-        <section className="mb-12">
-          <h2 className="text-xl font-normal mb-6">Featured Writing</h2>
-          <div className="space-y-4">
-            {featured.map((post) => (
-              <div key={post.slug}>
-                <div className="text-sm text-gray-500 mb-1">{formatDate(post.date, 'short')}</div>
-                <Link to={`/blog/${post.slug}`} className={`text-lg ${link}`}>
-                  {post.title}
-                </Link>
-              </div>
-            ))}
-
-            <div className="mt-6">
-              <Link
-                to="/blog"
-                className="text-sm font-medium text-gray-900 underline decoration-gray-500 hover:decoration-gray-900"
-              >
-                Read more posts →
-              </Link>
-            </div>
-          </div>
-        </section>
-
         <section id="work" className="mb-12">
           <h2 className="text-xl font-normal mb-6">Work</h2>
           <ul className="list-disc pl-5 space-y-4">
@@ -110,6 +87,29 @@ const Home = () => {
               wish I'd been more thoughtful here, but it worked out.
             </li>
           </ul>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-xl font-normal mb-6">Featured Writing</h2>
+          <div className="space-y-4">
+            {featured.map((post) => (
+              <div key={post.slug}>
+                <div className="text-sm text-gray-500 mb-1">{formatDate(post.date, 'short')}</div>
+                <Link to={`/blog/${post.slug}`} className={`text-lg ${link}`}>
+                  {post.title}
+                </Link>
+              </div>
+            ))}
+
+            <div className="mt-6">
+              <Link
+                to="/blog"
+                className="text-sm font-medium text-gray-900 underline decoration-gray-500 hover:decoration-gray-900"
+              >
+                Read more posts →
+              </Link>
+            </div>
+          </div>
         </section>
 
         <section className="mb-12">

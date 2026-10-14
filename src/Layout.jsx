@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
+import { SubscribeButton } from './components/Subscribe';
 
 const navLink = ({ isActive }) =>
   `text-sm font-medium hover:text-gray-600 ${isActive ? 'text-gray-900 underline decoration-gray-500' : 'text-gray-900'}`;
@@ -26,13 +27,14 @@ const Layout = () => (
         <Link to="/" className="text-sm font-medium text-gray-900 hover:text-gray-600">
           Andy Blechman
         </Link>
-        <div className="flex items-center space-x-6">
+        <div className="flex items-center space-x-4 sm:space-x-6">
           <NavLink to="/" end className={navLink}>
             Home
           </NavLink>
           <NavLink to="/blog" className={navLink}>
             Posts
           </NavLink>
+          <SubscribeButton />
         </div>
       </div>
     </nav>

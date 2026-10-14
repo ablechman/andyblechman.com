@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { posts } from '../posts';
 import { formatDate } from '../lib/frontmatter';
 import { useTitle } from '../Layout';
+import { SubscribeBox } from '../components/Subscribe';
 
 const link = 'underline decoration-gray-500 hover:decoration-gray-900 font-medium';
 
@@ -152,6 +153,8 @@ const Home = () => {
             </li>
           </ul>
         </section>
+
+        <SubscribeBox />
       </main>
     </>
   );

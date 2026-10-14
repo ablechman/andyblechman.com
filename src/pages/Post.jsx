@@ -4,6 +4,7 @@ import { getPost } from '../posts';
 import { formatDate } from '../lib/frontmatter';
 import { useTitle } from '../Layout';
 import NotFound from './NotFound';
+import { SubscribeBox } from '../components/Subscribe';
 
 const Post = () => {
   const { slug } = useParams();
@@ -22,7 +23,11 @@ const Post = () => {
         <div className="prose" dangerouslySetInnerHTML={{ __html: post.html }} />
       </article>
 
-      <footer className="mt-16 pt-8 border-t border-gray-200 flex justify-between text-sm">
+      <div className="mt-16">
+        <SubscribeBox title="Enjoyed this? Get the next one by email" />
+      </div>
+
+      <footer className="mt-12 pt-8 border-t border-gray-200 flex justify-between text-sm">
         <Link to="/blog" className="font-medium underline decoration-gray-500 hover:decoration-gray-900">
           ← All posts
         </Link>

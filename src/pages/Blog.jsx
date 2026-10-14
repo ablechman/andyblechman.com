@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { posts } from '../posts';
 import { formatDate } from '../lib/frontmatter';
 import { useTitle } from '../Layout';
+import { SubscribeBox } from '../components/Subscribe';
 
 const Blog = () => {
   useTitle('Posts');
@@ -31,8 +32,12 @@ const Blog = () => {
         ))}
       </div>
 
-      <p className="mt-12 text-sm text-gray-500">
-        Subscribe via{' '}
+      <div className="mt-14">
+        <SubscribeBox />
+      </div>
+
+      <p className="mt-4 text-sm text-gray-500">
+        Or follow via{' '}
         <a href="/rss.xml" className="underline decoration-gray-500 hover:decoration-gray-900">
           RSS
         </a>

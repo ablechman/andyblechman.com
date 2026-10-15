@@ -42,12 +42,11 @@ const Home = () => {
           <h2 className="text-xl font-normal mb-6">Work</h2>
           <ul className="list-disc pl-5 space-y-4">
             <li className="text-lg leading-relaxed">
-              Now: I'm the product manager on a new AI project with{' '}
+              Now: I joined Weave as a product manager in late 2025, and I have been working with{' '}
               <a href="https://www.linkedin.com/in/bsrubin/" target="_blank" rel="noopener noreferrer" className={link}>
                 Ben
               </a>{' '}
-              and the team at Happier Meditation. I decide what we build and prototype hands-on. The goal is
-              to use AI for good to help people evolve.
+              and the team on a new, AI-focused 0 → 1 bet.
             </li>
             <li className="text-lg leading-relaxed">
               2025: Worked with my good friend,{' '}

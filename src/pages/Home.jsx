@@ -21,7 +21,7 @@ const Home = () => {
             <a href="https://bottle.com" target="_blank" rel="noopener noreferrer" className={link}>
               Bottle.com
             </a>
-            , a business-in-a-box for local food entrepreneurs.
+            , a business-in-a-box for local food entrepreneurs, where I'm still involved.
           </p>
           <p>
             I've spent the bulk of my{' '}
@@ -31,8 +31,8 @@ const Home = () => {
             as a founder building companies from zero to one.
           </p>
           <p>
-            Currently, I'm most interested in how physiological behaviors like sleep and exercise can
-            improve human performance at work and in sports.
+            These days, I'm most interested in how AI can help people grow, and how behaviors like sleep
+            and exercise can improve human performance at work and in sports.
           </p>
         </div>
       </header>

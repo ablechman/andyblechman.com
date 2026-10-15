@@ -31,7 +31,7 @@ const Home = () => {
             as a founder building companies from zero to one.
           </p>
           <p>
-            These days, I'm most interested in how AI can help people grow, and how behaviors like sleep
+            Currently, I'm most interested in how AI can help people grow, and how behaviors like sleep
             and exercise can improve human performance at work and in sports.
           </p>
         </div>

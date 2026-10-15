@@ -42,6 +42,22 @@ const Home = () => {
           <h2 className="text-xl font-normal mb-6">Work</h2>
           <ul className="list-disc pl-5 space-y-4">
             <li className="text-lg leading-relaxed">
+              Now: I'm working with{' '}
+              <a href="https://www.linkedin.com/in/bsrubin/" target="_blank" rel="noopener noreferrer" className={link}>
+                Ben
+              </a>{' '}
+              and the team at Happier Meditation on a new AI exploration, using AI for good to help people
+              evolve.
+            </li>
+            <li className="text-lg leading-relaxed">
+              2025: Worked with my good friend, Dan Love, to support portfolio company investments at his
+              holding company,{' '}
+              <a href="https://beckleywaves.com/" target="_blank" rel="noopener noreferrer" className={link}>
+                Beckley Waves
+              </a>
+              . We also spent time exploring potential incubations in mental health and human performance.
+            </li>
+            <li className="text-lg leading-relaxed">
               2015 - 2025: Cofounder of{' '}
               <a href="https://bottle.com" target="_blank" rel="noopener noreferrer" className={link}>
                 Bottle.com

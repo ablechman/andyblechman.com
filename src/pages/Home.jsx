@@ -46,7 +46,11 @@ const Home = () => {
               <a href="https://www.linkedin.com/in/bsrubin/" target="_blank" rel="noopener noreferrer" className={link}>
                 Ben
               </a>{' '}
-              and the team at Happier Meditation on a new, AI-focused 0 → 1 bet.
+              and the team at{' '}
+              <a href="https://www.meditatehappier.com/" target="_blank" rel="noopener noreferrer" className={link}>
+                Happier Meditation
+              </a>{' '}
+              on a new, AI-focused 0 → 1 bet.
             </li>
             <li className="text-lg leading-relaxed">
               2025: Worked with my good friend,{' '}

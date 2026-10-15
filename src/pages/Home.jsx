@@ -27,7 +27,7 @@ const Home = () => {
             human performance.
           </p>
           <p>
-            Co-founded and built{' '}
+            Previously, I co-founded and built{' '}
             <a href="https://bottle.com" target="_blank" rel="noopener noreferrer" className={link}>
               Bottle.com
             </a>

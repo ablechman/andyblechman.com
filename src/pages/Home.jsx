@@ -42,11 +42,11 @@ const Home = () => {
           <h2 className="text-xl font-normal mb-6">Work</h2>
           <ul className="list-disc pl-5 space-y-4">
             <li className="text-lg leading-relaxed">
-              Now: I joined Weave as a product manager in late 2025, and I have been working with{' '}
+              Now: Working with{' '}
               <a href="https://www.linkedin.com/in/bsrubin/" target="_blank" rel="noopener noreferrer" className={link}>
                 Ben
               </a>{' '}
-              and the team on a new, AI-focused 0 → 1 bet.
+              and the team at Happier Meditation on a new, AI-focused 0 → 1 bet.
             </li>
             <li className="text-lg leading-relaxed">
               2025: Worked with my good friend,{' '}

@@ -1,28 +1,27 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-// Buttondown's public embed endpoint: no API key needed. It doesn't send CORS headers,
-// so the response is opaque and a request that goes out counts as success.
-const BUTTONDOWN_USERNAME = 'TODO';
-
-async function saveEmail(email) {
-  await fetch(`https://buttondown.com/api/emails/embed-subscribe/${BUTTONDOWN_USERNAME}`, {
+// Posts to api/subscribe.js, which stores the email in Neon.
+async function saveEmail(fields) {
+  const res = await fetch('/api/subscribe', {
     method: 'POST',
-    mode: 'no-cors',
-    body: new URLSearchParams({ email, embed: '1' }),
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(fields),
   });
-  return { ok: true };
+  return { ok: res.ok };
 }
 
 export function SubscribeForm({ autoFocus = false }) {
   const [email, setEmail] = useState('');
+  const [website, setWebsite] = useState(''); // honeypot, hidden from people
   const [status, setStatus] = useState('idle'); // idle | saving | done | error
+  const { pathname } = useLocation();
 
   const onSubmit = async (e) => {
     e.preventDefault();
     setStatus('saving');
     try {
-      const result = await saveEmail(email.trim());
+      const result = await saveEmail({ email: email.trim(), source: pathname, website });
       setStatus(result.ok ? 'done' : 'error');
     } catch {
       setStatus('error');
@@ -30,7 +29,7 @@ export function SubscribeForm({ autoFocus = false }) {
   };
 
   if (status === 'done') {
-    return <p className="text-base text-gray-700">Almost there. Check your inbox to confirm.</p>;
+    return <p className="text-base text-gray-700">Thanks. You'll get new posts by email.</p>;
   }
 
   if (status === 'error') {
@@ -39,6 +38,16 @@ export function SubscribeForm({ autoFocus = false }) {
 
   return (
     <form onSubmit={onSubmit} className="flex gap-2">
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        value={website}
+        onChange={(e) => setWebsite(e.target.value)}
+        className="absolute -left-[9999px] h-px w-px opacity-0"
+      />
       <input
         type="email"
         required

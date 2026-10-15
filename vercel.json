@@ -7,6 +7,12 @@
       "permanent": true
     },
     {
+      "source": "/rss/",
+      "has": [{ "type": "host", "value": "blog.andyblechman.com" }],
+      "destination": "https://andyblechman.com/rss.xml",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "blog.andyblechman.com" }],
       "destination": "https://andyblechman.com/blog/:path*",
@@ -19,6 +25,6 @@
     }
   ],
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
   ]
 }

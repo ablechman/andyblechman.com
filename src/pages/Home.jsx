@@ -31,8 +31,9 @@ const Home = () => {
             as a founder building companies from zero to one.
           </p>
           <p>
-            Currently, I'm most interested in how AI can help people grow, and how behaviors like sleep
-            and exercise can improve human performance at work and in sports.
+            Currently, I'm most interested in how AI can help people improve their mental health and change
+            how they see the world. I remain deeply interested in understanding how technology can drive
+            changes in physiological behaviors like sleep and exercise to improve human performance.
           </p>
         </div>
       </header>

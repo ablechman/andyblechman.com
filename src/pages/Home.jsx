@@ -21,7 +21,7 @@ const Home = () => {
             <a href="https://bottle.com" target="_blank" rel="noopener noreferrer" className={link}>
               Bottle.com
             </a>
-            , a business-in-a-box for local food entrepreneurs, where I'm still involved.
+            , a business-in-a-box for local food entrepreneurs, where I'm still involved as a Board Member.
           </p>
           <p>
             I've spent the bulk of my{' '}

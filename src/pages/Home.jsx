@@ -17,21 +17,21 @@ const Home = () => {
         <h1 className="text-3xl font-normal mb-6">Andy Blechman</h1>
         <div className="text-lg leading-relaxed space-y-4">
           <p>
-            Currently, I'm most interested in how AI can help people improve their mental health and change
-            how they see the world. Working with the team at{' '}
+            Currently, I'm interested in leveraging AI to help people improve their mental health and change
+            how they see the world. To that end, I'm currently a part of the team at{' '}
             <a href="https://www.meditatehappier.com/" target="_blank" rel="noopener noreferrer" className={link}>
               Happier Meditation
             </a>{' '}
-            on something new in AI + inner work.
+            building something new in AI + inner work. Additionally, I'm deeply interested in understanding
+            how technology can drive changes in physiological behaviors like sleep and exercise to improve
+            human performance.
           </p>
           <p>
             Co-founded and built{' '}
             <a href="https://bottle.com" target="_blank" rel="noopener noreferrer" className={link}>
               Bottle.com
             </a>
-            , a business-in-a-box for local food entrepreneurs. I'm deeply interested in understanding how
-            technology can drive changes in physiological behaviors like sleep and exercise to improve human
-            performance.
+            , a business-in-a-box for local food entrepreneurs.
           </p>
           <p>
             I've spent the bulk of my{' '}

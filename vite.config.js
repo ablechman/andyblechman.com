@@ -25,7 +25,7 @@ function loadPosts() {
     .sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
-// Emits /rss.xml at build time. Buttondown watches this feed to email new posts to subscribers.
+// Emits /rss.xml at build time so feed readers can follow new posts.
 function rssPlugin() {
   return {
     name: 'rss',

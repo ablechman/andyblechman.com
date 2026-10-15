@@ -10,10 +10,10 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { email = '', source = '', website = '' } = req.body || {};
+  const { email = '', source = '', extra_field: trap = '' } = req.body || {};
 
   // Honeypot: people never see this field, bots fill it in. Pretend it worked.
-  if (website) return res.status(200).json({ ok: true });
+  if (trap) return res.status(200).json({ ok: true });
 
   const clean = String(email).trim().toLowerCase();
   if (clean.length > 254 || !EMAIL_RE.test(clean)) {

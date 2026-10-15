@@ -8,68 +8,82 @@ async function saveEmail(fields) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(fields),
   });
-  return { ok: res.ok };
+  const data = await res.json().catch(() => ({}));
+  return { ok: res.ok, error: data.error };
 }
+
+const GENERIC_ERROR = 'Something went wrong. Please try again.';
 
 export function SubscribeForm({ autoFocus = false }) {
   const [email, setEmail] = useState('');
-  const [website, setWebsite] = useState(''); // honeypot, hidden from people
-  const [status, setStatus] = useState('idle'); // idle | saving | done | error
+  const [trap, setTrap] = useState(''); // honeypot, hidden from people
+  const [status, setStatus] = useState('idle'); // idle | saving | done
+  const [error, setError] = useState('');
   const { pathname } = useLocation();
 
   const onSubmit = async (e) => {
     e.preventDefault();
     setStatus('saving');
+    setError('');
     try {
-      const result = await saveEmail({ email: email.trim(), source: pathname, website });
-      setStatus(result.ok ? 'done' : 'error');
+      const result = await saveEmail({ email: email.trim(), source: pathname, extra_field: trap });
+      if (result.ok) {
+        setStatus('done');
+        return;
+      }
+      setError(result.error || GENERIC_ERROR);
     } catch {
-      setStatus('error');
+      setError(GENERIC_ERROR);
     }
+    setStatus('idle');
   };
 
   if (status === 'done') {
     return <p className="text-base text-gray-700">Thanks. You'll get new posts by email.</p>;
   }
 
-  if (status === 'error') {
-    return <p className="text-base text-gray-700">Something went wrong. Please try again later.</p>;
-  }
-
   return (
-    <form onSubmit={onSubmit} className="flex gap-2">
-      <input
-        type="text"
-        name="website"
-        tabIndex={-1}
-        autoComplete="off"
-        aria-hidden="true"
-        value={website}
-        onChange={(e) => setWebsite(e.target.value)}
-        className="absolute -left-[9999px] h-px w-px opacity-0"
-      />
-      <input
-        type="email"
-        required
-        autoFocus={autoFocus}
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="you@example.com"
-        aria-label="Email address"
-        className="min-w-0 flex-1 rounded-md border border-gray-300 bg-white px-3 py-2 font-sans text-sm placeholder-gray-400 focus:border-gray-900 focus:outline-none"
-      />
-      <button
-        type="submit"
-        disabled={status === 'saving'}
-        className="rounded-md bg-gray-900 px-4 py-2 font-sans text-sm font-medium text-white hover:bg-gray-700 disabled:opacity-60"
-      >
-        {status === 'saving' ? 'Subscribing…' : 'Subscribe'}
-      </button>
+    <form onSubmit={onSubmit}>
+      <div className="flex gap-2">
+        {/* Named so browsers won't autofill it; bots that fill every field get caught. */}
+        <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
+          <input
+            type="text"
+            name="extra_field"
+            tabIndex={-1}
+            autoComplete="new-password"
+            value={trap}
+            onChange={(e) => setTrap(e.target.value)}
+          />
+        </div>
+        <input
+          type="email"
+          required
+          autoFocus={autoFocus}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="you@example.com"
+          aria-label="Email address"
+          className="min-w-0 flex-1 rounded-md border border-gray-300 bg-white px-3 py-2 font-sans text-sm placeholder-gray-400 focus:border-gray-900 focus:outline-none"
+        />
+        <button
+          type="submit"
+          disabled={status === 'saving'}
+          className="rounded-md bg-gray-900 px-4 py-2 font-sans text-sm font-medium text-white hover:bg-gray-700 disabled:opacity-60"
+        >
+          {status === 'saving' ? 'Subscribing…' : 'Subscribe'}
+        </button>
+      </div>
+      {error && (
+        <p role="alert" className="mt-2 text-sm text-red-700">
+          {error}
+        </p>
+      )}
     </form>
   );
 }
 
-export function SubscribeBox({ title = 'Get new posts by email', note = 'No spam. Unsubscribe anytime.' }) {
+export function SubscribeBox({ title = 'Get new posts by email', note = "I'll only use this to email new posts." }) {
   return (
     <section className="rounded-lg border border-gray-200 bg-white/60 p-6">
       <h2 className="text-xl font-normal mb-1">{title}</h2>

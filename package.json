@@ -9,7 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@tryghost/content-api": "^1.11.21",
+    "@neondatabase/serverless": "^1.2.0",
+    "marked": "^15.0.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^7.2.0"
